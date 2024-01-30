@@ -1,0 +1,12 @@
+{
+  "name": "nodejs-file-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node file-manager.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
