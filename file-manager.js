@@ -1,5 +1,6 @@
 import * as readline from 'node:readline';
 import commandExecutor from './commandExecutor.js';
+import { getWorkingDirectory } from "./common.js";
 
 const userArgs = process.argv.slice(2)[0];
 const equalSignIndex = userArgs.indexOf('=');
@@ -15,3 +16,4 @@ process.on('exit', (code) => {
 });
 
 process.stdout.write(`Welcome to the File Manager, ${userName}!` + '\n');
+process.stdin.write(`You are currently in: ${getWorkingDirectory()}` + '\n');
