@@ -12,7 +12,7 @@ function commandExecutor(line) {
     const command = parsedLine.shift();
     const args = [...parsedLine];
     commands[command](args);
-    process.stdin.write(`You are currently in: ${getWorkingDirectory()}` + '\n');
+    process.stdout.write(`You are currently in: ${getWorkingDirectory()}` + '\n');
 };
 
 export default commandExecutor;

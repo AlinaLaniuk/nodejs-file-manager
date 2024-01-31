@@ -16,4 +16,4 @@ process.on('exit', (code) => {
 });
 
 process.stdout.write(`Welcome to the File Manager, ${userName}!` + '\n');
-process.stdin.write(`You are currently in: ${getWorkingDirectory()}` + '\n');
+process.stdout.write(`You are currently in: ${getWorkingDirectory()}` + '\n');
