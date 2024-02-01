@@ -7,8 +7,7 @@ function goUpper(){
     if(currentWorkingDir === root){
         process.stdout.write('You cannot go upper.');
     } else {
-        const lastFolder = path.basename(currentWorkingDir);
-        const newCurrentWorkingDirPath = path.join(...currentWorkingDir.split(path.sep).filter((part) => part !== lastFolder));
+        const newCurrentWorkingDirPath = path.resolve(getWorkingDirectory(), '..');
         changeWorkingDirectory(newCurrentWorkingDirPath);
     }
 };
