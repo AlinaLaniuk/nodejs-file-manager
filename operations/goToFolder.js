@@ -1,13 +1,21 @@
 import * as path from 'path';
+import { access } from 'fs/promises';
 import { getWorkingDirectory, changeWorkingDirectory } from '../common.js';
 
-function goToFolder(newPath){
+async function goToFolder(newPath) {
     const pathString = newPath.join('');
     const isPathAbsolute = path.isAbsolute(...newPath);
-    if(isPathAbsolute){
-        changeWorkingDirectory(newPath);
-    } else {
-        
+    try {
+        if (isPathAbsolute) {
+            await access(pathString);
+            changeWorkingDirectory(pathString);
+        } else {
+            const newWorkingDir = path.resolve(getWorkingDirectory(), pathString);
+            await access(newWorkingDir);
+            changeWorkingDirectory(newWorkingDir);
+        }
+    } catch (err) {
+        process.stdout.write('No such file or directory'  + '\n');
     }
 };
 

@@ -7,11 +7,11 @@ const commands = {
     cd: goToFolder
 }
 
-function commandExecutor(line) {
+async function commandExecutor(line) {
     const parsedLine = line.split(' ');
     const command = parsedLine.shift();
     const args = [...parsedLine];
-    commands[command](args);
+    await commands[command](args);
     process.stdout.write(`You are currently in: ${getWorkingDirectory()}` + '\n');
 };
 

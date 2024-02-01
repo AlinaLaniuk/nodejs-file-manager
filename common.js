@@ -8,6 +8,5 @@ export function changeWorkingDirectory(newWorkingDirectory){
 };
 
 export function getWorkingDirectory(){
-  console.log(path.parse(currentWorkingDir));
     return currentWorkingDir;
 }
