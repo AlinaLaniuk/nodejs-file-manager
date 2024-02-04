@@ -2,6 +2,7 @@ import goUpper from "./operations/goUpper.js";
 import goToFolder from "./operations/goToFolder.js";
 import listWorkingDirContent from "./operations/list.js";
 import readFile from "./operations/readFile.js";
+import addNewFile from "./operations/addNewFile.js";
 import { getWorkingDirectory } from "./common.js";
 
 const commands = {
@@ -9,6 +10,7 @@ const commands = {
     cd: goToFolder,
     ls: listWorkingDirContent,
     cat: readFile,
+    add: addNewFile
 }
 
 async function commandExecutor(line) {
