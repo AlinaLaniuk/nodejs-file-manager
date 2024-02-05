@@ -9,6 +9,7 @@ import deleteFile from "./operations/deleteFile.js";
 import osOperations from "./operations/osOperations.js";
 import { getWorkingDirectory } from "./common.js";
 import moveFile from "./operations/moveFile.js";
+import calculateHash from "./operations/hash.js";
 
 const commands = {
     up: goUpper,
@@ -20,7 +21,8 @@ const commands = {
     cp: copyFiles,
     mv: moveFile,
     rm: deleteFile,
-    os: osOperations
+    os: osOperations,
+    hash: calculateHash
 }
 
 async function commandExecutor(line) {
