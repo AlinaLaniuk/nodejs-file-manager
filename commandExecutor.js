@@ -10,6 +10,7 @@ import osOperations from "./operations/osOperations.js";
 import { getWorkingDirectory } from "./common.js";
 import moveFile from "./operations/moveFile.js";
 import calculateHash from "./operations/hash.js";
+import compress from "./operations/compress.js";
 import * as os from 'os';
 
 const commands = {
@@ -23,7 +24,8 @@ const commands = {
     mv: moveFile,
     rm: deleteFile,
     os: osOperations,
-    hash: calculateHash
+    hash: calculateHash,
+    compress: compress
 }
 
 async function commandExecutor(line) {
