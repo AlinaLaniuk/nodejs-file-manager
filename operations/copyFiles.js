@@ -19,7 +19,7 @@ async function copyFiles(args) {
         const writeStream = fs.createWriteStream(to);
         await finished(readStream.pipe(writeStream));
     } catch (err) {
-        process.stdout.write('Wrong file path.' + err + '\n');
+        process.stdout.write('Wrong file path.' + '\n');
     }
 };
 
