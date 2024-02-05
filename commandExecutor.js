@@ -27,11 +27,15 @@ const commands = {
 }
 
 async function commandExecutor(line) {
-    const parsedLine = line.split(' ');
-    const command = parsedLine.shift();
-    const args = [...parsedLine];
-    await commands[command](args);
-    process.stdout.write(`You are currently in: ${getWorkingDirectory()}` + os.EOL);
+    try {
+        const parsedLine = line.split(' ');
+        const command = parsedLine.shift();
+        const args = [...parsedLine];
+        await commands[command](args);
+        process.stdout.write(`You are currently in: ${getWorkingDirectory()}` + os.EOL);
+    } catch (err) {
+        process.stdout.write('Try again. Something wrong' + os.EOL);
+    }
 };
 
 export default commandExecutor;

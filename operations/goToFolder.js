@@ -4,9 +4,12 @@ import { access } from 'fs/promises';
 import { getWorkingDirectory, changeWorkingDirectory } from '../common.js';
 
 async function goToFolder(newPath) {
-    const pathString = newPath.join('');
-    const isPathAbsolute = path.isAbsolute(...newPath);
     try {
+        if(newPath.length !== 1){
+            throw new Error('Unexpected arguments.' + os.EOL);
+        }
+        const pathString = newPath.join('');
+        const isPathAbsolute = path.isAbsolute(...newPath);
         if (isPathAbsolute) {
             await access(pathString);
             changeWorkingDirectory(pathString);
