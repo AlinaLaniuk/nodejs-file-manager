@@ -1,4 +1,5 @@
 import * as path from 'path';
+import * as os from 'os';
 import { access } from 'fs/promises';
 import { getWorkingDirectory, changeWorkingDirectory } from '../common.js';
 
@@ -15,7 +16,7 @@ async function goToFolder(newPath) {
             changeWorkingDirectory(newWorkingDir);
         }
     } catch (err) {
-        process.stdout.write('No such file or directory'  + '\n');
+        process.stdout.write('No such file or directory'  + os.EOL);
     }
 };
 

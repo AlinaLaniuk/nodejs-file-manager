@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as promisifyFs from 'fs/promises';
 import * as path from 'path';
+import * as os from 'os';
 import { getWorkingDirectory } from '../common.js';
 
 async function readFile(args) {
@@ -10,10 +11,10 @@ async function readFile(args) {
         await promisifyFs.access(filePath);
         const stream = fs.createReadStream(filePath);
         stream.on('data', (data) => {
-            process.stdout.write(data + '\n');
+            process.stdout.write(data + os.EOL);
         });
     } catch (err) {
-        process.stdout.write('Wrong file path.');
+        process.stdout.write('Wrong file path.' + os.EOL);
     }
 };
 

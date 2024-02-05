@@ -1,5 +1,5 @@
 import * as fs from 'fs/promises';
-import { changeWorkingDirectory, getWorkingDirectory } from '../common.js';
+import { getWorkingDirectory } from '../common.js';
 
 async function listWorkingDirContent(){
     const workingDirContent = await fs.readdir(getWorkingDirectory(), {withFileTypes: true});

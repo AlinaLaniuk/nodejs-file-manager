@@ -10,6 +10,7 @@ import osOperations from "./operations/osOperations.js";
 import { getWorkingDirectory } from "./common.js";
 import moveFile from "./operations/moveFile.js";
 import calculateHash from "./operations/hash.js";
+import * as os from 'os';
 
 const commands = {
     up: goUpper,
@@ -30,7 +31,7 @@ async function commandExecutor(line) {
     const command = parsedLine.shift();
     const args = [...parsedLine];
     await commands[command](args);
-    process.stdout.write(`You are currently in: ${getWorkingDirectory()}` + '\n');
+    process.stdout.write(`You are currently in: ${getWorkingDirectory()}` + os.EOL);
 };
 
 export default commandExecutor;

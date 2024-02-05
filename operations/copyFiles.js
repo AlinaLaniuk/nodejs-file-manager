@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as fsPromises from 'fs/promises';
 import * as path from 'path';
+import * as os from 'os';
 import { getWorkingDirectory } from '../common.js';
 import { finished } from 'stream/promises';
 
@@ -19,7 +20,7 @@ async function copyFiles(args) {
         const writeStream = fs.createWriteStream(to);
         await finished(readStream.pipe(writeStream));
     } catch (err) {
-        process.stdout.write('Wrong file path.' + '\n');
+        process.stdout.write('Wrong file path.' + os.EOL);
     }
 };
 
