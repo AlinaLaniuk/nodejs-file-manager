@@ -6,6 +6,7 @@ import addNewFile from "./operations/addNewFile.js";
 import rename from "./operations/rename.js";
 import copyFiles from "./operations/copyFiles.js";
 import { getWorkingDirectory } from "./common.js";
+import moveFile from "./operations/moveFile.js";
 
 const commands = {
     up: goUpper,
@@ -14,7 +15,8 @@ const commands = {
     cat: readFile,
     add: addNewFile,
     rn: rename,
-    cp: copyFiles
+    cp: copyFiles,
+    mv: moveFile
 }
 
 async function commandExecutor(line) {

@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as fsPromises from 'fs/promises';
 import * as path from 'path';
 import { getWorkingDirectory } from '../common.js';
+import { finished } from 'stream/promises';
 
 async function copyFiles(args) {
     try {
@@ -11,16 +12,14 @@ async function copyFiles(args) {
         const userFromFilePathInput = args[0];
         const userToFilePathInput = args[1];
         const from = path.isAbsolute(userFromFilePathInput) ? userFromFilePathInput : path.resolve(getWorkingDirectory(), userFromFilePathInput);
-        const to = path.isAbsolute(userToFilePathInput) ? userToFilePathInput : path.resolve(getWorkingDirectory(), userToFilePathInput);
+        const to = path.isAbsolute(userToFilePathInput) ? userToFilePathInput : path.resolve(getWorkingDirectory(), userToFilePathInput, path.parse(from).base);
         await fsPromises.access(from);
-        await fsPromises.access(to);
+        await fsPromises.writeFile(to, '');
         const readStream = fs.createReadStream(from);
         const writeStream = fs.createWriteStream(to);
-        readStream.on('data', (chunk) => {
-            writeStream.write(chunk);
-        });
+        await finished(readStream.pipe(writeStream));
     } catch (err) {
-        process.stdout.write('Wrong file path.' + '\n');
+        process.stdout.write('Wrong file path.' + err + '\n');
     }
 };
 
